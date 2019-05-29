@@ -26,7 +26,8 @@ public class HomePresenter implements ViewListener {
 	public void onButtonClicked(String button) {
 
 		if (button.equals("Show Orders")) {
-			new OrdersView(context);
+			final OrdersView view = new OrdersView();
+			new OrdersPresenter(view);
 		} else if (button.equals("Order Pizza")) {
 
 			Order order = context.getBean("order", Order.class);
@@ -39,6 +40,12 @@ public class HomePresenter implements ViewListener {
 
 	@Override
 	public void getTextFieldValue(String text) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void getRowId(String text) {
 		// TODO Auto-generated method stub
 
 	}

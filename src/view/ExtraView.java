@@ -199,7 +199,7 @@ public class ExtraView {
 		UIManager.put("OptionPane.minimumSize", new Dimension(620, 200));
 		UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Microsoft JhengHei UI", Font.BOLD, 25)));
 		UIManager.put("Button.background", Color.white);
-		JOptionPane.showMessageDialog(frame, panel, "Choose extra toppings", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(frame, panel, "Choose extra topics", JOptionPane.PLAIN_MESSAGE);
 	}
 
 	// Iterate through the list, notifying each listener individual

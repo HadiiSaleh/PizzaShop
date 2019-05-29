@@ -4,10 +4,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -17,11 +25,12 @@ import dough.Dough;
 @Component
 @Scope("prototype")
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
 
 	@Id
 	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(name = "date")
@@ -30,9 +39,11 @@ public class Order {
 	@Column(name = "price")
 	private float price;
 
-	// ManyToMany relationship
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "order_pizza", joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"))
 	private List<Pizza> pizzas;
 
+	@Transient
 	private ArrayList<Dough> doughs;
 
 	public Order() {
@@ -79,6 +90,8 @@ public class Order {
 	}
 
 	public void AddPizza(Pizza pizza) {
+		if (pizzas == null)
+			pizzas = new ArrayList<>();
 		this.pizzas.add(pizza);
 	}
 

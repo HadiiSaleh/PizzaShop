@@ -50,4 +50,10 @@ public class TypePresenter implements ViewListener {
 
 	}
 
+	@Override
+	public void getRowId(String text) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
