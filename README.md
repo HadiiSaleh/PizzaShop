@@ -1,5 +1,5 @@
 # PizzaShop
-pizza shop Desktop app using mvp design pattern ,Java Swing ,spring framework
+pizza shop Desktop app using mvp design pattern ,Java Swing ,spring framework and Hibernates
 
 step 1: modify hibernate configuration in "/PizzaShop/src/hibernate.cfg.xml" file
 
